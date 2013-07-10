@@ -1,5 +1,7 @@
-﻿//var my_file = new File("L:/Production/XYZ - Movie Name/Shot XYZ/comp/SCRIPT_TEST.aet");
-//new_project = app.open(my_file);
+﻿//var my_file = new File(app.project.file);
+//var new_project = app.open(my_file);
+
+//alert(new_project)
 
 function getType(obj){
     if (obj === undefined) { return 'undefined'; }
@@ -10,10 +12,6 @@ function getType(obj){
 Object.prototype.getType = function(){
     return Object.prototype.toString.call(this).split(' ').pop().split(']').shift().toLowerCase();
 };
-
-
-
-
 
 {
 var message = ""
@@ -33,14 +31,16 @@ var start_frame
 var end_frame
 
 for(var i=1 ; i<len+1 ; i++){
-        if(getType(app.project.items[i].mainSource) == "filesource" && getType(app.project.items[i]) == "footageitem" && app.project.items[i].parentFolder.name == "PASSES"){
+        if(getType(app.project.items[i].mainSource) == "filesource" && getType(app.project.items[i]) == "footageitem" && app.project.items[i].parentFolder.name == "PASSES (REPLACE THESE)"){
                 footageList.push(app.project.items[i])
                 filename = app.project.items[i].name
                 message += "\n"+ filename
                 //message += " SOURCE: " + app.project.items[i].file.fullName
                 tokens_1 = filename.split(".")
                 tokens_2 = tokens_1[tokens_1.length-2]
-                if(tokens_2[0] == "["){
+                //alert(tokens_1, "token_1")                
+                //alert(tokens_2, "token_2")                
+                if(tokens_2 != null && tokens_2[0] == "["){
                     tokens_2 = tokens_2.replace("[","")
                     tokens_2 = tokens_2.replace("]","")
                     start_frame = Number(tokens_2.split("-")[0])
@@ -61,6 +61,9 @@ for(var i=1 ; i<len+1 ; i++){
     else if(getType(app.project.items[i]) == "compitem"){            
             compList.push(app.project.items[i])
         }
+    else{
+        //alert(getType(app.project.items[i].mainSource))
+        }
 }
 
 
@@ -71,8 +74,13 @@ for(var i=0 ; i<footageList.length ; i++){
     footageList[i].replaceWith
     }
 
+//alert(durations)
+//alert(durations.sort())
+durations.sort()
+durations.reverse()
+maxDuration =  Number(timeToCurrentFormat(durations.pop(), 30, true)) + 1
 
-maxDuration =  Number(timeToCurrentFormat(durations.sort().pop(), 30, true)) + 1
+//alert("maxDuration = " + maxDuration)
 
 // Lets DO THIS
 //=================
