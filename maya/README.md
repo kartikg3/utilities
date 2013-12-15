@@ -2,11 +2,11 @@ Maya utitlities
 ===============
 
 modifiers.py
+------------
 
 Maya widget that makes it easy to choose between various selection and visibility modifiers.
 
-usage:
-------
+### usage:
 
 ~~~~~~
   # create an instance of the ModifiersWidget:
