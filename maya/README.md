@@ -9,4 +9,4 @@ usage:
   create an instance of the ModifiersWidget:
   myModWidget = ModifiersWidget()
 
-![Alt text](/maya/screenshots/modifiers_001.jpg "Screenshot")
+![Alt text](screenshots/modifiers_001.jpg "Screenshot")
